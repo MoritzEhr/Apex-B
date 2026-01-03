@@ -1255,11 +1255,11 @@ function trackPurchaseCompleted() {
 
 
     } else {
-      console.error('❌ gtag ist nicht verfügbar! Stellen Sie sicher, dass Google Analytics korrekt geladen wurde.');
+      console.error('gtag ist nicht verfügbar! Stellen Sie sicher, dass Google Analytics korrekt geladen wurde.');
     }
 
   } catch (error) {
-    console.error('❌ Fehler beim Tracking:', error);
+    console.error('Fehler beim Tracking:', error);
   }
 }
 
