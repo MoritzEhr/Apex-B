@@ -746,8 +746,8 @@ function renderCart() {
 
   const totals = getCartTotals();
   const totalItems = getTotalItems();
-  const meetsMinimumOrder = totals.subtotal >= MINIMUM_ORDER_VALUE;
-  const remainingAmount = Math.max(0, MINIMUM_ORDER_VALUE - totals.subtotal);
+  const meetsMinimumOrder = totals.total >= MINIMUM_ORDER_VALUE;
+  const remainingAmount = Math.max(0, MINIMUM_ORDER_VALUE - totals.total);
 
   if (cartState.showOrderSummary) {
     sidebar.innerHTML = `
@@ -1154,7 +1154,7 @@ function attachCartListeners() {
   if (proceedBtn) {
     proceedBtn.addEventListener("click", () => {
       const totals = getCartTotals();
-      if (totals.subtotal >= MINIMUM_ORDER_VALUE) {
+      if (totals.total >= MINIMUM_ORDER_VALUE) {
         cartState.showOrderSummary = true;
         renderCart();
       }
@@ -1183,7 +1183,7 @@ function attachCartListeners() {
   if (confirmBtn) {
     confirmBtn.addEventListener("click", () => {
       const totals = getCartTotals();
-      if (totals.subtotal >= MINIMUM_ORDER_VALUE) {
+      if (totals.total >= MINIMUM_ORDER_VALUE) {
         // ===== GA4 TRACKING =====
         trackPurchaseCompleted();
         // ========================
