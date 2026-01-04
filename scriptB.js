@@ -1250,7 +1250,9 @@ function trackPurchaseCompleted() {
         is_co2_neutral: cartState.isCO2Neutral,
         has_subscription: cartState.hasSubscription,
         total_value: totals.total,
-        currency: 'EUR'
+        currency: 'EUR',
+        has_auto_drink: cartState.hasAutoDrink,
+        has_auto_drink2: autoDrinkExists,
       });
 
 
