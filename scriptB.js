@@ -1240,6 +1240,8 @@ function trackPurchaseCompleted() {
     const AUTO_DRINK_ID = "auto-drink-free";
     const hasAutoDrink = cart.some((item) => item.id === AUTO_DRINK_ID);
 
+    console.log('DEBUG has_auto_drink:', hasAutoDrink, 'Cart:', cart.map(i => i.id));
+
     // Prüfe ob gtag verfügbar ist
     if (typeof gtag === 'function') {
       // Sende Event direkt an GA4 mit gtag
