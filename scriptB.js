@@ -1233,6 +1233,9 @@ function trackPurchaseCompleted() {
     const totals = getCartTotals();
     const tipPercentage = Math.round(cartState.selectedTipPercent * 100); // In Prozent (z.B. 10 für 10%)
     const uid = getUrlParameter('uid'); // Hole uid aus URL
+    const proid = getUrlParameter('proid'); // Hole proid aus URL
+    const sessionid = getUrlParameter('sessionid'); // Hole sessionid aus URL
+    const studyid = getUrlParameter('studyid'); // Hole studyid aus URL
 
     const transactionId = generateTransactionId();
 
@@ -1246,6 +1249,9 @@ function trackPurchaseCompleted() {
       gtag('event', 'purchase_completed', {
         transaction_id: transactionId,
         uid_token: uid,
+        proid_token: proid,
+        sessionid_token: sessionid,
+        studyid_token: studyid,
         tip_percentage: tipPercentage,
         bestseller_count: countBestsellers(),
         has_insurance: cartState.hasInsurance,
