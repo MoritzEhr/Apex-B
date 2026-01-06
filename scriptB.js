@@ -1190,7 +1190,7 @@ function attachCartListeners() {
 
         clearCart();
         closeCart();
-        showOrderConfirmation();
+        showOrderConfirmation(totals.total);
       }
     });
   }
@@ -1248,7 +1248,6 @@ function trackPurchaseCompleted() {
       // Sende Event direkt an GA4 mit gtag
       gtag('event', 'purchase_completed', {
         transaction_id: transactionId,
-        uid_token: uid,
         proid_token: proid,
         sessionid_token: sessionid,
         studyid_token: studyid,
@@ -1262,7 +1261,6 @@ function trackPurchaseCompleted() {
         has_auto_drink: hasAutoDrink,
       });
 
-
     } else {
       console.error('gtag ist nicht verfügbar! Stellen Sie sicher, dass Google Analytics korrekt geladen wurde.');
     }
@@ -1273,9 +1271,15 @@ function trackPurchaseCompleted() {
 }
 
 // Order Confirmation Modal
-function showOrderConfirmation() {
+function showOrderConfirmation(orderTotal) {
   const modal = document.getElementById("orderModal");
   if (modal) {
+    // Set the order total value
+    const orderValueElement = modal.querySelector("#orderValue");
+    if (orderValueElement && orderTotal) {
+      orderValueElement.textContent = orderTotal.toFixed(2);
+    }
+
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
   }
